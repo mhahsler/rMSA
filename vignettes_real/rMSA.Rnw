@@ -1,0 +1,433 @@
+%%%
+%%% Do not edit the .tex file. It is automatically generated
+%%% go to Work/vignette
+%%%
+
+%\documentclass[fleqn, letter, 10pt]{article}
+%\documentclass[article]{jss}
+\documentclass[nojss]{jss}
+%\usepackage[round,longnamesfirst]{natbib}
+%\usepackage[left=1.5in,top=1.5in,right=1.5in,bottom=1.5in,nohead]{geometry}
+%\usepackage{graphicx,keyval,thumbpdf,url}
+%\usepackage{hyperref}
+%\usepackage{Sweave}
+%\SweaveOpts{strip.white=TRUE, eps=FALSE}
+%\AtBeginDocument{\setkeys{Gin}{width=0.6\textwidth}}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+%% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+
+%\newcommand{\strong}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+\newcommand{\class}[1]{\mbox{\textsf{#1}}}
+\newcommand{\func}[1]{\mbox{\texttt{#1()}}}
+%\newcommand{\code}[1]{\mbox{\texttt{#1}}}
+%\newcommand{\pkg}[1]{\strong{#1}}
+%\newcommand{\samp}[1]{`\mbox{\texttt{#1}}'}
+%\newcommand{\proglang}[1]{\textsf{#1}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+%\newcommand{\sQuote}[1]{`{#1}'}
+%\newcommand{\dQuote}[1]{``{#1}''}
+\newcommand\R{{\mathbb{R}}}
+
+%\DeclareMathOperator*{\argmin}{argmin}
+%\DeclareMathOperator*{\argmax}{argmax}
+
+%\setlength{\parindent}{0mm}
+%\setlength{\parskip}{3mm plus2mm minus2mm}
+
+%\VignetteIndexEntry{rMSA: Interface to Popular Multiple Sequence Alignment Tools}
+
+
+\author{
+    Michael Hahsler\\Southern Methodist University
+    \And
+    Anurag Nagar\\University of Houston, Clear Lake
+    }
+
+\title{\pkg{rMSA}: Interface to Popular Multiple Sequence Alignment Tools}
+%% for pretty printing and a nice hypersummary also set:
+\Plainauthor{Michael Hahsler, Anurag Nagar} %% comma-separated
+\Plaintitle{rMSA: Interface to Popular Multiple Sequence Alignment Tools} %% without formatting
+\Shorttitle{rMSA: Multiple Sequence Alignment Tools} %% a short title (if necessary)
+
+%% an abstract and keywords
+\Abstract{
+Three are many stand-alone tools available for Bioinformatics. This package
+aims at using R and the Biostrings package as the common interface for
+several important tools for multiple sequence alignment (e.g., ClustalW, Kalign, MAFFT and MUSCLE).
+}
+\Keywords{bioinformatics, Bioconductor, biostrings, multiple sequence alignment}
+\Plainkeywords{bioinformatics, Bioconductor, biostrings, multiple sequence alignment} %% without formatting
+
+%% at least one keyword must be supplied
+
+%% publication information
+%% NOTE: Typically, this can be left commented and will be filled out by the technical editor
+%% \Volume{13}
+%% \Issue{9}
+%% \Month{September}
+%% \Year{2004}
+%% \Submitdate{2004-09-29}
+%% \Acceptdate{2004-09-29}
+
+%% The address of (at least) one author should be given
+%% in the following format:
+\Address{
+    Michael Hahsler\\
+        Engineering Management, Information, and Systems\\
+        Lyle School of Engineering\\
+        Southern Methodist University\\
+        P.O. Box 750123 \\
+        Dallas, TX 75275-0123\\
+        E-mail: \email{mhahsler@lyle.smu.edu}\\
+        URL: \url{http://lyle.smu.edu/~mhahsler}
+
+    Anurag Nagar\\
+        Computer Science and Engineering\\
+        Lyle School of Engineering\\
+        Southern Methodist University\\
+        P.O. Box 750122 \\
+        Dallas, TX 75275-0122\\
+        E-mail: \email{anagar@smu.edu}\\
+
+}
+%% It is also possible to add a telephone and fax number
+%% before the e-mail in the following format:
+%% Telephone: +43/1/31336-5053
+%% Fax: +43/1/31336-734
+
+%% for those who use Sweave please include the following line (with % symbols):
+%% need no \usepackage{Sweave.sty}
+
+%% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\sloppy
+
+%\abstract{}
+
+<<echo=FALSE>>=
+options(width = 70, prompt="R> ", digits=4)
+### for sampling
+set.seed(1234)
+@
+
+\section{Introduction}
+There are many tools available for multiple sequence alignment
+Some tools are:
+T-Coffee \citep{sequence:Notredame:2000},
+MAFFT \citep{sequence:Katoh:2002},
+MUSCLE \citep{sequence:Edgar:2004,sequence:Edgar:2004b},
+Kalign \citep{sequence:Lassmann:2006} and
+ClustalW2 and ClustalX2 \citep{sequence:Larkin:2007}.
+Typically, for these tools can be used online via a Web site and/or
+the user can download and install software with a command-line interface.
+Often the input and output data is stored in files using various formats
+and the parameters that need to ne supplied to the command-line interface
+varies greatly between different tools.
+All this makes using and comparing several approaches time consuming and
+error prone. The R-based Bioconductor project~\citep{sequence:BioC}
+provides a convenient infrastructure to handle and manipulate bioinformatics
+data. The \pkg{Biostrings} package in particular provides
+infrastructure for DNA, RNA and protein sequences as well as
+(multiple) sequence alignments.
+Also basic algorithms for pairwise sequence alignment are included.
+However, to optain multiple sequence alignments,
+the user has to export the sequences into a file, then run the needed tools
+manually and re-import the results.
+
+In \pkg{rMSA} we provide a simple interface to a growing
+set of popular tools. The tools are called directly from within R and no manual data export or import are needed. Currently we
+interface \emph{ClustalW, Kalign, MAFFT} and  \emph{MUSCLE}.
+
+%%% FIXME: Paper structure
+
+
+\section{Installing Third-Party Software}
+
+\pkg{rMSA} does not provide third-party software, but interfaces correctly
+installed software. This has the advantages that not all software has
+to be installed if only some of it is needed and that the user can
+always install the current version of the software.
+
+Instructions on where to find the needed third-party software can be found in
+the manual page for each function.
+
+The package is loaded using:
+<<>>=
+library("rMSA")
+@
+
+To read about installing the third-party software use:
+
+<<eval=FALSE>>=
+? rMSA_INSTALL
+@
+
+%\pkg{rMSA} is designed to make installation of third-party
+%software (RDP, clustal, kalign, MAFFT, BLAST and boxshade) easy by providing
+%\code{rMSA_Software_Wizard()}. With this wizard the needed software
+%can be installed individually. This is shown in the example section.
+%
+%Additional software is stored in a subdirectory of the home directory
+%called \code{rMSA}.
+
+\section{Multiple Sequence Alignment}
+
+Multiple Sequence Alignment (MSA) involves comparing and aligning more than two sequences to each other. The aim  is to discover regions of high similarity in a set of sequences.
+
+Although, computationally complex, MSA is quite often what biologists need to characterize a group of sequences that, e.g., are evolutionary related to each other by sharing a common ancestor. Such sequences are said to be homologous. Similarly, biologists  might be interested in the similarity of genes from different organisms based on their sequences. Another area of application is to find regions which are conserved for a given species or genus. Such conserved regions can be used for identification and classification of organisms.
+
+MSA is a NP-hard problem \cite{ch2:MSAComplexity, ch2:MSAComplexity2} and is  computationally more complex than pairwise alignment. Some techniques that are used for pairwise alignment, such as dynamic programming, can also be used for MSA but have much greater run time requirements. To obtain results in reasonable time, various heuristics have been proposed such as progressive alignment, iterative refinement methods, and Hidden Markov Models \cite{ch2:MSAAlgorithms}. Out of these, progressive alignment is the most commonly used in many tools for MSA such as Clustal\cite{ch2:clustal}.
+
+%Current methods for Clustal are through an online interface through the The European Bioinformatics Institute website at http://www.ebi.ac.uk/Tools/msa/clustalw2/ or through a webservice also at the same website. There is no current tool that can be run through the command line for a batch of sequences. Our package addresses this need by providing an interface that can be used for DNA Sequences.
+
+%The \pkg{rMSA} provides a rich set of functionality for MSA operations including visualization options. The commands below will illustrate that in detail.
+
+\subsection{ClustalW}
+We read an example FASTA file with DNA which comes with this package,
+take the first 60 nucleotides and run Clustal.
+<<>>=
+dna <- readDNAStringSet(system.file("examples/DNA_example.fasta",
+        package="rMSA"))
+dna <- narrow(dna, start=1, end=60)
+
+al <- clustal(dna)
+al
+@
+
+Using detail the alignment can be inspected.
+<<eval=false>>=
+detail(al)
+@
+
+Plot produces the  sequence logo shown in Figure~\ref{fig:abundanceplot}.
+<<sequencelogo, fig=TRUE, include=FALSE, height=3>>=
+plot(al, 1, 40)
+@
+
+\begin{figure}
+\centering
+\includegraphics[width=.8\linewidth]{rMSA-sequencelogo}
+\caption{Sequence logo of alignment.}
+\label{fig:abundanceplot}
+\end{figure}
+
+Boxshade (if installed) can also be used for producing a pdf of the alignment.
+Figure~\ref{fig:boxshade} shows the result.
+<<boxshade>>=
+boxshade(al, file="alignment.pdf")
+@
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{alignment}
+\caption{Representation of a DNA multiple alignment using boxshade.}
+\label{fig:boxshade}
+\end{figure}
+
+
+Clustal can also be used for RNA and protein sequences.
+<<>>=
+rna <- readRNAStringSet(system.file("examples/RNA_example.fasta",
+        package="rMSA"))
+rna
+
+al <- clustal(rna)
+al
+@
+
+<<>>=
+aa <- readAAStringSet(system.file("examples/Protein_example.fasta",
+        package="rMSA"))
+aa
+
+al <- clustal(aa)
+al
+@
+
+\subsection{Kalign}
+
+Another popular technique for MSA is based on the KAlign algorithm \cite{kalign}. It uses a progressive method for sequence alignment by first calculating pairwise distances between sequences and then constructing a guide tree from these pairwise alignments. The guide tree is used to progressively create the multiple sequence alignment profile. KAlign uses the Wu-Manber approximate string matching algorithm \cite{Wu-Manber} for distance calculation.
+KAlign has been evaluated to be faster and more efficient than other methods \cite{kalign}  due to the use of the approximate string matching algorithm and  efficient guide tree generation.
+
+<<>>=
+dna <- readDNAStringSet(system.file("examples/DNA_example.fasta",
+        package="rMSA"))
+dna
+
+### align the sequences
+al <- kalign(dna)
+al
+@
+
+\subsection{MUSCLE}
+MUSCLE uses a multi-stage approach based on
+$k$-mer distance and binary guide trees to produce high-quality MSA's
+very quickly \citep{sequence:Edgar:2004,sequence:Edgar:2004b}.
+
+
+<<>>=
+dna <- readDNAStringSet(system.file("examples/DNA_example.fasta",
+  package="rMSA"))
+dna
+
+al <- muscle(dna)
+al
+@
+
+
+\subsection{MAFFT}
+MAFFT \citep{sequence:Katoh:2002} is a similarity-based MSA technique using
+progressive and iterative refinement methods.
+
+<<>>=
+dna <- readDNAStringSet(system.file("examples/DNA_example.fasta",
+  package="rMSA"))
+dna
+
+al <- mafft(dna)
+al
+@
+
+\section{Auxiliary Function}
+
+\subsection{Creating Random Sequences}
+Creating random sequences given letter probabilities.
+<<>>=
+seqs <- random_sequences(100, number=10, prob=c(a=.5, c=.3, g=.1, t=.1))
+seqs
+@
+
+Creating random sequences using dinucleotides transition probabilities
+<<>>=
+prob <-  matrix(runif(16), nrow=4, ncol=4, dimnames=list(DNA_BASES, DNA_BASES))
+prob <- prob/rowSums(prob)
+
+seqs <- random_sequences(100, number=10, prob=prob)
+seqs
+@
+
+Creates a set of sequences which are random mutations (with base changes, insertions and deletions) for a given DNA, RNA or AA sequence.
+<<>>=
+s <- random_sequences(100, number=1)
+s
+
+### create 10 sequences with 1 percent base changes, insertions and deletions
+m <- mutations(s, 10, change=0.01, insertion=0.01, deletion=0.01)
+m
+
+clustal(c(s,m))
+@
+
+\subsection{Calculating Distances between Sequences}
+Sequence alignment and distance calculation between sequences (e.g., edit distance) are related. Some MSA heuristics even use similarities/distances
+to guide the alignment process.
+\pkg{rMSA} provides the following distance metrics:
+
+\begin{itemize}
+\item Feature frequency profile (\code{distFFP}): A FFP is the normalized (by the number of $k$-mers in the sequence) count of each possible $k$-mer in a sequence. The distance is defined as the Jensen-Shannon divergence (JSD) between FFPs \citep{Sims:2011}.
+
+\item Composition Vector (\code{distCV}): A CV is a vector with the frequencies of each $k$-mer in the sequence minus the expected frequency of random background nice obtained from a Markov Model (not implemented yet!). The cosine distance is used between CVs \citep{Qi:2004}.
+
+\item Numerical Summarization Vector (\code{distNSV}): An NSV is frequency distribution of all possible $k$-mers in a sequence. The Manhattan distance is used between NSVs \citep{hahsler:Nagar2013}.
+
+\item Distance between sets of $k$-mers (\code{distkMer}): Each sequence is represented as a set of $k$-mers. The Jaccard (binary) distance is used between sets (number of unique shared $k$-mers over the total number of unique $k$-mers in both sequences).
+
+\item Distance based on SimRank (\code{distSimRank}): $1-$simRank.  The function \code{simRank} is also available \citep{sequence:DeSantis:2011}.
+
+\item Edit (Levenshtein) Distance (\code{distEdit}): Edit distance between sequences.
+
+\item Distance based on alignment score (\code{distAlignment}): see \code{stringDist} in \pkg{Biostrings}.
+
+\item Evolutionary distances (\code{distApe}): see \code{dist.dna} in \pkg{ape}.
+\end{itemize}
+
+In the following example we create 100 mutations from a
+random single sequence.
+
+<<>>=
+s <- random_sequences(len = 100)
+s
+ms <- mutations(s, number = 100)
+ms
+@
+
+Since the mutations also include insertions and deletions, the
+set of resulting sequences have different length (see width above).
+We calculate different distance measures on the set of
+mutations and then compare how much the different measures
+aggree. We use Spearman's rank correlation coefficient to evaluate aggreement
+and show the resulting relationship in Figure~\ref{fig:dist}.
+
+<<dist, fig=TRUE, include=FALSE>>=
+dNSV <- distNSV(ms)
+dFFP <- distFFP(ms)
+dCV <- distCV(ms)
+dKMer <- distKMer(ms)
+dSimRank <- distSimRank(ms)
+dEdit <- distEdit(ms)
+
+correlation <- cor(cbind(dEdit, dNSV, dFFP, dCV, dKMer, dSimRank),
+  method = "spearman")
+correlation
+plot(hclust(as.dist(1-correlation)))
+@
+
+SimRank produces distances most closely related to edit distance.
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\linewidth]{rMSA-dist}
+\caption{Correlation between different distance measures.}
+\label{fig:dist}
+\end{figure}
+
+\code{distApe} calculates evolution-based distances between aligned sequences.
+First we align the first 20 sequence using Clustal and then
+calculate distances using the Kimura (1980) model which incorporates
+assumtions about certain base transitions and transversion. We use
+hierarchical clustering on the distances and display the resulting
+dendrogram in Figure~\ref{fig:evol}.
+
+<<evol, fig=TRUE, include=FALSE>>=
+dK80 <- distApe(clustal(ms[1:20]), model="K80")
+par.old <- par(mar=c(5,1,2,6)+.1)
+plot(as.dendrogram(hclust(dK80)), horiz=TRUE, type="triangle",
+  xlab="Kimura (1980) distance")
+par(par.old)
+@
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\linewidth]{rMSA-evol}
+\caption{Evolutionaty relationship between 20 mutations based on Kimura (1980) distance.}
+\label{fig:evol}
+\end{figure}
+
+
+\section{Conclusion}
+
+
+
+\section*{Acknowledgments}
+This research was supported by research grant no. R21HG005912 from the National Human Genome Research Institute (NHGRI / NIH).
+
+
+%\bibliographystyle{abbrvnat}
+\bibliography{rMSA,sequence}
+
+
+\end{document}

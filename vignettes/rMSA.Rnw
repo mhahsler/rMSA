@@ -1,0 +1,9 @@
+%%% fake vignette. real vignette is in vignettes_real
+%\VignetteIndexEntry{Interface to Popular Multiple Sequence Alignment Tools}
+
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\begin{document}
+\includepdf[fitpaper=true,pages=-]{rMSA_vignette.pdf}
+\end{document}
