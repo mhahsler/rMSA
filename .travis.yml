@@ -1,7 +1,8 @@
 # Sample .travis.yml for R projects from https://github.com/craigcitro/r-travis
 language: r
 sudo: required
-warnings_are_errors: true
+warnings_are_errors: false
+bioc_required: true
 
 env:
   global:
@@ -9,6 +10,10 @@ env:
 
 r_packages:
   - covr
+
+bioc_packages:
+  - Biostrings
+  - seqLogo
 
 after_success:
   - Rscript -e 'covr::codecov()'
