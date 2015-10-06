@@ -56,3 +56,10 @@ export(
   s2c,
   c2s
   )
+
+
+
+S3method(plot, DNAMultipleAlignment)
+S3method(plot, RNAMultipleAlignment)
+S3method(plot, DNAStringSet)
+S3method(plot, RNAStringSet)
