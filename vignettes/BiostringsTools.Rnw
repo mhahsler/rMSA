@@ -1,0 +1,9 @@
+%%% fake vignette. real vignette is in Work/vignette/
+%\VignetteIndexEntry{BiostringsTools: Interface to Tools for Biostrings (alignment, classification, database)}
+
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\begin{document}
+\includepdf[fitpaper=true,pages=-]{BTools_vignette.pdf}
+\end{document}

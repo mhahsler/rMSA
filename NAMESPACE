@@ -1,0 +1,58 @@
+import(Biostrings)
+
+### for visualization
+import(seqLogo)
+
+### for distances
+importFrom(proxy, dist)
+importFrom(ape, dist.dna, as.DNAbin)
+
+export(
+  ### clustal
+	clustal,
+	clustal_help,
+#	clustal_profile,
+
+	### kalign
+	kalign,
+	kalign_help,
+
+  ### mafft
+  mafft,
+  mafft_help,
+
+  ### MUSCLE
+  muscle,
+  muscle_help,
+
+	### SimRank
+	simRank,
+
+	### boxshade
+	boxshade,
+	boxshade_help,
+
+	### visualizations for BioStrings
+	plot.DNAStringSet,
+	plot.DNAMultipleAlignment,
+	plot.RNAStringSet,
+	plot.RNAMultipleAlignment,
+
+  ### simulation
+  random_sequences,
+  mutations,
+
+  ### distances
+  distNSV,
+  distSimRank,
+  distApe,
+  distKMer,
+  distCV,
+  distFFP,
+  distEdit,
+  distAlignment,
+
+  ### helper
+  s2c,
+  c2s
+  )

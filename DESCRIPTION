@@ -1,0 +1,12 @@
+Package: rMSA
+Title: Interface to Popular Multiple Sequence Alignment Tools
+Description: Seamlessly interfaces the Multiple Sequence Alignment software packages ClustalW, MAFFT, MUSCLE and Kalign (downloaded separately).
+Version: 0.99.0
+Date: 2014-xx-xx
+Author: Michael Hahsler, Anurag Nagar
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+biocViews: Genetics, Sequencing, Infrastructure, Alignment
+Depends: Biostrings (>= 2.26.2)
+Imports: seqLogo, proxy, ape
+SystemRequirements: ClustalW, Kalign, MAFFT, MUSCLE, boxshade
+License: GPL-2
