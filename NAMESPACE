@@ -1,7 +1,7 @@
 import(Biostrings)
 
 ### for visualization
-import(seqLogo)
+importFrom(seqLogo, makePWM)  ## plot would overwrite graphics::plot
 
 ### for distances
 importFrom(proxy, dist)
