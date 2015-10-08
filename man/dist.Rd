@@ -93,6 +93,9 @@ Approach. Journal of Molecular Evolution 2004, 58:1-11.
 
 Anurag Nagar; Michael Hahsler (2013). "Fast discovery and visualization of conserved regions in DNA sequences using quasi-alignment." BMC Bioinformatics, 14(Suppl. 11), 2013
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 s <- mutations(random_sequences(100), 100)
 s

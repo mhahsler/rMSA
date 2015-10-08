@@ -28,6 +28,9 @@ An object of class DNAMultipleAlignment (see \pkg{BioStrings}).
 Larkin M., et al. Clustal W and Clustal X
 version 2.0, Bioinformatics 2007 23(21):2947-29
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 \dontrun{
 ### DNA

@@ -25,6 +25,9 @@ s2c(x)
 \value{
 Either a single character string or a vector of single characters.
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 s <- sample(c("A", "C", "G", "T"), 10, replace = TRUE)
 s

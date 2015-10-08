@@ -25,6 +25,9 @@ mutations(x, number=1, change=0.01, insertion=0.01, deletion=0.01, prob=NULL)
 \value{
 A XStringSet.
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 ### create random sequences
 s <- random_sequences(100, number=1)

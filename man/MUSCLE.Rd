@@ -29,6 +29,9 @@ Edgar, R.C. (2004) MUSCLE: multiple sequence alignment with high accuracy and hi
 
 Edgar, R.C. (2004) MUSCLE: a multiple sequence alignment method with reduced time and space complexity, BMC Bioinformatics, (5) 113
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 \dontrun{
 ### DNA

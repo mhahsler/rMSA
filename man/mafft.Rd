@@ -28,6 +28,9 @@ An object of class DNAMultipleAlignment (see \pkg{BioStrings}).
 Katoh, Standley 2013 (Molecular Biology and Evolution 30:772-780)
 MAFFT multiple sequence alignment software version 7: improvements in performance and usability.
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 \dontrun{
 ### DNA

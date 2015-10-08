@@ -26,6 +26,9 @@ random_sequences(len, number=1, prob=NULL, type=c("DNA", "RNA", "AA"))
 \value{
 A XStringSet.
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 ### create random sequences (using given letter frequencies)
 seqs <- random_sequences(100, number=10, prob=c(a=.5, c=.3, g=.1, t=.1))

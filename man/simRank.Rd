@@ -28,6 +28,9 @@ simRank(x, k = 7)
 Santis et al, Simrank: Rapid and sensitive general-purpose k-mer
 search tool, BMC Ecology 2011, 11:11
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 ### load sequences
 sequences <- readDNAStringSet(system.file("examples/DNA_example.fasta",

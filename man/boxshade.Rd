@@ -33,6 +33,9 @@ Only a file is created.
 \references{
 Boxshade has been written by Kay Hofmann and Michael D. Baron
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 \dontrun{
 rna <- readRNAStringSet(system.file("examples/RNA_example.fasta",

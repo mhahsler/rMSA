@@ -24,6 +24,9 @@ An object of class DNAMultipleAlignment (see \pkg{BioStrings}).
 Lassmann T.,  Sonnhammer E. Kalign - an accurate and fast multiple
 sequence alignment algorithm, BMC Bioinformatics 2005, 6:298
 }
+\author{
+    Michael Hahsler
+}
 \examples{
 \dontrun{
 dna <- readDNAStringSet(system.file("examples/DNA_example.fasta",
