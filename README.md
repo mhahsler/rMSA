@@ -1,6 +1,7 @@
 # rMSA - Interface for Popular Multiple Sequence Alignment Tools (R package)
 
 [![Travis-CI Build Status](https://travis-ci.org/mhahsler/rMSA.svg?branch=master)](https://travis-ci.org/mhahsler/rMSA)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mhahsler/rMSA?branch=master&svg=true)](https://ci.appveyor.com/project/mhahsler/rMSA)
 
 Seamlessly interfaces Multiple Sequence Alignment software packages including ClustalW, MAFFT, MUSCLE and Kalign 
 (downloaded separately) with the Bioconductor infrastructure. A short guide with examples can be found 
