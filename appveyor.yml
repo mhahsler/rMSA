@@ -12,6 +12,7 @@ install:
 # Adapt as necessary starting from here
 
 build_script:
+  - travis-tool.sh install_bioc Biostrings seqLogo
   - travis-tool.sh install_deps
 
 test_script:
@@ -20,21 +21,15 @@ test_script:
 on_failure:
   - travis-tool.sh dump_logs
 
+after_test:
+  - 7z a logs.zip *.Rcheck\**\*.Rout *.Rcheck\**\*.fail *.Rcheck\**\*.log *.Rcheck\**\*.out
+
 artifacts:
-  - path: '*.Rcheck\**\*.log'
-    name: Logs
-
-  - path: '*.Rcheck\**\*.out'
-    name: Logs
-
-  - path: '*.Rcheck\**\*.fail'
-    name: Logs
-
-  - path: '*.Rcheck\**\*.Rout'
+  - path: 'logs.zip'
     name: Logs
 
   - path: '\*_*.tar.gz'
-    name: Bits
+    name: Linux package
 
   - path: '\*_*.zip'
-    name: Bits
+    name: Windows package
