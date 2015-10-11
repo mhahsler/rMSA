@@ -15,7 +15,7 @@ Seamlessly interfaces Multiple Sequence Alignment software packages including Cl
 * To install individual MSA tools follow the instructions found in `? rMSA_INSTALL`
 
 ## Example
-```
+```R
 R> library("rMSA")
 
 R> rna <- readRNAStringSet(system.file("examples/RNA_example.fasta", package="rMSA"))
