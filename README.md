@@ -11,7 +11,7 @@ Seamlessly interfaces Multiple Sequence Alignment software packages including Cl
 
 * Install [Bioconductor](http://www.bioconductor.org/install/) and the Bioconductor packages
 `Biostrings` and `seqLogo`.
-*  Download and install the package from [AppVeyor](https://ci.appveyor.com/project/mhahsler/rMSA/build/artifacts) or install via `intall_github("mhahsler/rMSA")` (needs devtools) 
+*  Download and install the package from [AppVeyor](https://ci.appveyor.com/project/mhahsler/rMSA/build/artifacts) or install via `install_github("mhahsler/rMSA")` (needs devtools) 
 * To install individual MSA tools follow the instructions found in `? rMSA_INSTALL`
 
 ## Example
