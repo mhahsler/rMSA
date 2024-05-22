@@ -1,5 +1,5 @@
 #######################################################################
-# BiostringsTools - Interfaces to several sequence alignment and 
+# BiostringsTools - Interfaces to several sequence alignment and
 # classification tools
 # Copyright (C) 2012 Michael Hahsler and Anurag Nagar
 #
@@ -18,25 +18,21 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ### implement simrank similarity defined in
-### Santis et al, Simrank: Rapid and sensitive general-purpose k-mer 
+### Santis et al, Simrank: Rapid and sensitive general-purpose k-mer
 ### search tool, BMC Ecology 2011, 11:11
 
-### The similarity between sequences Q and S are the number of unique k-mers 
-### shared, divided by the smallest total unique k-mer count in either Q or S. 
+### The similarity between sequences Q and S are the number of unique k-mers
+### shared, divided by the smallest total unique k-mer count in either Q or S.
 
-simRank <- function(x, k=7) {
+simRank <- function(x, k = 7) {
     x <- DNAStringSet(x)
-    
-    x.kmer <- oligonucleotideFrequency(x, k) >0
+
+    x.kmer <- oligonucleotideFrequency(x, k) > 0
 
     shared <- tcrossprod(x.kmer)
     sum.kmer <- rowSums(x.kmer)
-    
-    min <- outer(sum.kmer, sum.kmer, function(x, y) pmin(x,y)) 
 
-    proxy::as.simil(shared/min)
+    min <- outer(sum.kmer, sum.kmer, function(x, y) pmin(x, y))
+
+    proxy::as.simil(shared / min)
 }
-
-
-  
-

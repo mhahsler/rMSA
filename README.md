@@ -27,7 +27,7 @@ Additional installation instructions can be found [here](INSTALL).
 ``` r
 library("rMSA")
 
-rna <- readRNAStringSet(system.file("examples/RNA_example.fasta", package="rMSA"))
+rna <- readRNAStringSet(system.file("examples/RNA_example.fasta", package = "rMSA"))
 rna
 ```
 

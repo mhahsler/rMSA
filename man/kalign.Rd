@@ -15,7 +15,7 @@ kalign_help()
   \item{param}{character string with the command line parameters for kalign (see output of \code{kalign_help()}).}
 }
 \details{
-The kalign software has to be installed (see \link{rMSA_INSTALL}).
+For installation details see: \url{https://github.com/mhahsler/rMSA/blob/master/INSTALL}
 }
 \value{
 An object of class DNAMultipleAlignment (see \pkg{BioStrings}).

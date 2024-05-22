@@ -19,7 +19,7 @@ muscle_help()
 
 }
 \details{
-The MUSCLE software has to be installed (see \link{rMSA_INSTALL}).
+For installation details see: \url{https://github.com/mhahsler/rMSA/blob/master/INSTALL}
 }
 \value{
 An object of class DNAMultipleAlignment (see \pkg{BioStrings}).

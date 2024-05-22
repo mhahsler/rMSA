@@ -18,10 +18,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 s2c <- function(x) {
-  x <- as.character(x)
-  sapply(1:nchar(x), function(p) substr(x,p,p))
+    x <- as.character(x)
+    sapply(1:nchar(x), function(p) substr(x, p, p))
 }
 
-c2s <- function(x) paste(x, collapse='')
-
-
+c2s <- function(x) paste(x, collapse = "")

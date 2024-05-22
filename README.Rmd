@@ -3,7 +3,7 @@ output: github_document
 ---
 
 ```{r echo=FALSE, results = 'asis'}
-pkg <- 'rMSA'
+pkg <- "rMSA"
 
 source("https://raw.githubusercontent.com/mhahsler/pkg_helpers/main/pkg_helpers.R")
 pkg_title(pkg, CRAN = FALSE)
@@ -25,7 +25,7 @@ Additional installation instructions can be found [here](INSTALL).
 ```{r}
 library("rMSA")
 
-rna <- readRNAStringSet(system.file("examples/RNA_example.fasta", package="rMSA"))
+rna <- readRNAStringSet(system.file("examples/RNA_example.fasta", package = "rMSA"))
 rna
 
 al <- clustal(rna)

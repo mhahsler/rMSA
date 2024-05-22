@@ -3,9 +3,13 @@ import(Biostrings)
 ### for visualization
 importFrom(seqLogo, makePWM)  ## plot would overwrite graphics::plot
 
+#importFrom(pwalign, stringDist)
+
 ### for distances
 importFrom(proxy, dist)
 importFrom(ape, dist.dna, as.DNAbin)
+importFrom("methods", "as")
+importFrom("stats", "as.dist", "rbinom", "runif")
 
 export(
   ### clustal

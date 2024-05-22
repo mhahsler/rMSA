@@ -25,7 +25,7 @@ boxshade_help()
   alignment covers multiple pages.}
 }
 \details{
-The boxshade software has to be installed (see \link{rMSA_INSTALL}).
+For installation details see: \url{https://github.com/mhahsler/rMSA/blob/master/INSTALL}
 }
 \value{
 Only a file is created.

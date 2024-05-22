@@ -10,7 +10,7 @@
 %\usepackage[left=1.5in,top=1.5in,right=1.5in,bottom=1.5in,nohead]{geometry}
 %\usepackage{graphicx,keyval,thumbpdf,url}
 %\usepackage{hyperref}
-%\usepackage{Sweave}
+\usepackage{Sweave}
 %\SweaveOpts{strip.white=TRUE, eps=FALSE}
 %\AtBeginDocument{\setkeys{Gin}{width=0.6\textwidth}}
 
@@ -49,7 +49,7 @@
 \author{
     Michael Hahsler\\Southern Methodist University
     \And
-    Anurag Nagar\\University of Houston, Clear Lake
+    Anurag Nagar\\University of Texas at Dallas
     }
 
 \title{\pkg{rMSA}: Interface to Popular Multiple Sequence Alignment Tools}
@@ -82,21 +82,18 @@ several important tools for multiple sequence alignment (e.g., ClustalW, Kalign,
 %% in the following format:
 \Address{
     Michael Hahsler\\
-        Engineering Management, Information, and Systems\\
-        Lyle School of Engineering\\
-        Southern Methodist University\\
-        P.O. Box 750123 \\
-        Dallas, TX 75275-0123\\
-        E-mail: \email{mhahsler@lyle.smu.edu}\\
-        URL: \url{http://lyle.smu.edu/~mhahsler}
-
-    Anurag Nagar\\
-        Computer Science and Engineering\\
+        Computer Science\\
         Lyle School of Engineering\\
         Southern Methodist University\\
         P.O. Box 750122 \\
         Dallas, TX 75275-0122\\
-        E-mail: \email{anagar@smu.edu}\\
+        E-mail: \email{mhahsler@lyle.smu.edu}\\
+        URL: \url{http://lyle.smu.edu/~mhahsler}
+
+    Anurag Nagar\\
+        Computer Science\\
+        University of Texas at Dallas\\
+        E-mail: \email{Anurag.Nagar@utdallas.edu}\\
 
 }
 %% It is also possible to add a telephone and fax number
@@ -112,6 +109,7 @@ several important tools for multiple sequence alignment (e.g., ClustalW, Kalign,
 
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \sloppy
 
@@ -169,11 +167,9 @@ The package is loaded using:
 library("rMSA")
 @
 
-To read about installing the third-party software use:
+To read about installing the third-party software refer to the
+INSTALL file.
 
-<<eval=FALSE>>=
-? rMSA_INSTALL
-@
 
 %\pkg{rMSA} is designed to make installation of third-party
 %software (RDP, clustal, kalign, MAFFT, BLAST and boxshade) easy by providing
@@ -368,7 +364,7 @@ Since the mutations also include insertions and deletions, the
 set of resulting sequences have different length (see width above).
 We calculate different distance measures on the set of
 mutations and then compare how much the different measures
-aggree. We use Spearman's rank correlation coefficient to evaluate aggreement
+agree. We use Spearman's rank correlation coefficient to evaluate agreement
 and show the resulting relationship in Figure~\ref{fig:dist}.
 
 <<dist, fig=TRUE, include=FALSE>>=

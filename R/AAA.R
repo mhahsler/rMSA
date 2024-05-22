@@ -18,14 +18,17 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
-.findExecutable <- function(exe, interactive=TRUE) {
-  path <- Sys.which(exe)
-  if(all(path=="")) {
-    if(interactive) stop("Executable for ", paste(exe, collapse=" or "),
-      " not found! Install the needed software (see: ? rMSA_INSTALL)!",
-      call.=FALSE)
-    return(character(0))
-  }
+.findExecutable <- function(exe, interactive = TRUE) {
+    path <- Sys.which(exe)
+    if (all(path == "")) {
+        if (interactive) {
+            stop("Executable for ", paste(exe, collapse = " or "),
+                " not found! Install the needed software (see: https://github.com/mhahsler/rMSA/blob/master/INSTALL)!",
+                call. = FALSE
+            )
+        }
+        return(character(0))
+    }
 
-  path[which(path!="")[1]]
+    path[which(path != "")[1]]
 }

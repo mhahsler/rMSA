@@ -17,40 +17,43 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-mafft <- function(x, param="--auto") {
-
+mafft <- function(x, param = "--auto") {
     ## get temp files and change working directory
     wd <- tempdir()
     dir <- getwd()
     temp_file <- basename(tempfile(tmpdir = wd))
     on.exit({
-		file.remove(Sys.glob(paste(temp_file, ".*", sep="")))
-		setwd(dir)
-	    })
+        file.remove(Sys.glob(paste(temp_file, ".*", sep = "")))
+        setwd(dir)
+    })
     setwd(wd)
 
-    infile <- paste(temp_file, ".in", sep="")
-    outfile <- paste(temp_file, ".aln", sep="")
-    reader <- if(is(x, "RNAStringSet")) readRNAMultipleAlignment
-	else if(is(x, "DNAStringSet")) readDNAMultipleAlignment
-	else if(is(x, "AAStringSet")) readAAMultipleAlignment
-	else stop("Unknown sequence type!")
+    infile <- paste(temp_file, ".in", sep = "")
+    outfile <- paste(temp_file, ".aln", sep = "")
+    reader <- if (inherits(x, "RNAStringSet")) {
+        readRNAMultipleAlignment
+    } else if (inherits(x, "DNAStringSet")) {
+        readDNAMultipleAlignment
+    } else if (inherits(x, "AAStringSet")) {
+        readAAMultipleAlignment
+    } else {
+        stop("Unknown sequence type!")
+    }
 
 
-    writeXStringSet(x, infile, append=FALSE, format="fasta")
+    writeXStringSet(x, infile, append = FALSE, format = "fasta")
 
     ## call clustalw (needs to be installed and in the path!)
-    system(paste(.findExecutable( "mafft"), param, "--clustalout",
-		    infile,">", outfile))
+    system2(
+        .findExecutable("mafft"),
+        args = c(param, "--clustalout",
+        infile, ">", outfile
+    ))
 
-    reader(outfile, format="clustal")
+    reader(outfile, format = "clustal")
 }
 
 mafft_help <- function() {
-    #system(paste(.findExecutable("mafft"),
-		 #   "--help"))
-
-    cat("No MAFFT manual page available!")
-
+    system2(.findExecutable("mafft"),
+       args = c("--help"))
 }
-

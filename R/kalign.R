@@ -1,5 +1,5 @@
 #######################################################################
-# BiostringsTools - Interfaces to several sequence alignment and 
+# BiostringsTools - Interfaces to several sequence alignment and
 # classification tools
 # Copyright (C) 2012 Michael Hahsler and Anurag Nagar
 #
@@ -17,37 +17,39 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-kalign <- function(x, param=NULL) {
-  
-  ## get temp files and change working directory
-  wd <- tempdir()
-  dir <- getwd()
-  temp_file <- basename(tempfile(tmpdir = wd))
-  on.exit({
-    file.remove(Sys.glob(paste(temp_file, ".*", sep=""))) 
-    setwd(dir)
-  })
-  setwd(wd)
-  
-  infile <- paste(temp_file, ".in", sep="")
-  outfile <- paste(temp_file, ".aln", sep="")
-  
-  writeXStringSet(x, infile, append=FALSE, format="fasta")
-  
-  ## call clustalw (needs to be installed and in the path!)
-  system(paste(.findExecutable("kalign"), "-in", infile, "-out", outfile, 
-    "-f fasta", "-quiet", param))
-  
-  if(is(x, "DNAStringSet")) 
-    r <- readDNAMultipleAlignment(outfile, format="fasta")
-  else  if(is(x, "RNAStringSet"))
-    r <- readRNAMultipleAlignment(outfile, format="fasta")
-  else stop("Type of XStringSet not supported!")
-  
-  r
+kalign <- function(x, param = NULL) {
+    ## get temp files and change working directory
+    wd <- tempdir()
+    dir <- getwd()
+    temp_file <- basename(tempfile(tmpdir = wd))
+    on.exit({
+        file.remove(Sys.glob(paste(temp_file, ".*", sep = "")))
+        setwd(dir)
+    })
+    setwd(wd)
+
+    infile <- paste(temp_file, ".in", sep = "")
+    outfile <- paste(temp_file, ".aln", sep = "")
+
+    writeXStringSet(x, infile, append = FALSE, format = "fasta")
+
+    ## call kalign (needs to be installed and in the path!)
+    system2(.findExecutable("kalign"), args = c("-in", infile,
+                                                "-out", outfile,
+                                                param),
+            input = "\n")
+
+    if (inherits(x, "DNAStringSet")) {
+        r <- readDNAMultipleAlignment(outfile, format = "fasta")
+    } else if (inherits(x, "RNAStringSet")) {
+        r <- readRNAMultipleAlignment(outfile, format = "fasta")
+    } else {
+        stop("Type of XStringSet not supported!")
+    }
+
+    r
 }
 
 kalign_help <- function() {
-  system(paste(.findExecutable("kalign"), "-h"))
+    system2(.findExecutable("kalign"), args = c("-h"))
 }
-
