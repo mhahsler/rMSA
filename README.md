@@ -17,16 +17,19 @@ with the Bioconductor infrastructure. The tools have to be installed
 separately.
 
 In addition, distances between sets of sequences can be calculated
-providing
+providing.
 
-- Numerical summarization vector distance (Nagar and Hahsler, 2013)
-- Jensen-Shannon divergence (JSD) between FFPs (Sims and Kim, 2011)
-- Cosine distance is used between Composition Vectors (Qi et al, 2007)
-- Jaccard distance between sets of k-mers.
-- Distance based on SimRank (Santis et al, 2011)
-- Edit (Levenshtein) Distance (package pwalign)
-- Distance based on alignment scores (package pwalign)
-- Evolutionary distances (package ape)
+- k-mer-based distances
+  - Jensen-Shannon divergence (JSD) between FFPs (Sims and Kim, 2011)
+  - Cosine distance is used between Composition Vectors (Qi et al, 2007)
+  - Numerical summarization vector distance (Nagar and Hahsler, 2013)
+  - Jaccard distance between sets of k-mers.
+  - Distance based on SimRank (Santis et al, 2011)
+- Edit distance/alignment-based distances
+  - Edit (Levenshtein) Distance (package pwalign)
+  - Distance based on alignment scores (package pwalign)
+- Evolutionary distances
+  - Evolutionary distances (package ape)
 
 A short guide with examples can be found
 [here](http://github.com/mhahsler/rMSA/raw/master/vignettes_real/rMSA.pdf).

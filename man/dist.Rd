@@ -1,4 +1,5 @@
 \name{dist}
+\alias{dist}
 \alias{distNSV}
 \alias{distSimRank}
 \alias{distApe}
