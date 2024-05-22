@@ -1,0 +1,58 @@
+Installation Instructions for Package rBLAST
+
+
+1. Required R packages
+     From CRAN:
+
+     install.packages(c("proxy", "ape"))
+
+     From Bioc:
+
+     if (!require("BiocManager", quietly = TRUE))
+          install.packages("BiocManager")
+
+     BiocManager::install("Biostrings")
+     BiocManager::install("seqLogo")
+
+2. External Software
+
+    Linux (Ubuntu/Debian)
+    ====================
+
+    sudo apt-get install clustalw kalign mafft muscle boxshade ghostscript
+
+    For other distributions, use the appropriate package manager.
+
+    OS X
+    ====
+
+    * ClustalW: Install from http://www.clustal.org/.
+    * Kalign: Install from http://msa.sbc.su.se/cgi-bin/msa.cgi by downloading and installing the source of Kalign (current).
+    * MAFFT: Install from http://mafft.cbrc.jp/alignment/software/.
+    * MUSCLE: Install from http://www.drive5.com/muscle/.
+    * Boxshade is currenly not available for OS X (you can download it from http://boxshade.sourceforge.net/ and compile it with the free pascal compiler and install ghostscript).
+
+
+    Windows
+    =======
+
+    * ClustalW: Install from http://www.clustal.org/.
+    * Kalign: Download ‘kalign.exe’ from http://www.tcoffee.org/Packages/Binaries/windows/.
+    * MAFFT: Download ‘mafft.exe’ from http://www.tcoffee.org/Packages/Binaries/windows/.
+    * MUSCLE: Install from http://www.drive5.com/muscle/.
+    * Boxshade is currenly not available for Windows
+
+
+    Setting the PATH variable for Windows
+
+    * From the Desktop, right-click My Computer and click Properties.
+    * Click Advanced System Settings link in the left column.
+    * In the System Properties window click the Environment Variables button.
+    * Add the folder(s) with the executables to the PATH variable (separated by ;)
+    * Restart your R session.
+    * Try the following in R: Sys.which("clustalw") This should show you where it found the executable
+
+
+
+
+

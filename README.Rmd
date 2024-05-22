@@ -1,0 +1,33 @@
+---
+output: github_document
+---
+
+```{r echo=FALSE, results = 'asis'}
+pkg <- 'rMSA'
+
+source("https://raw.githubusercontent.com/mhahsler/pkg_helpers/main/pkg_helpers.R")
+pkg_title(pkg, CRAN = FALSE)
+```
+
+
+Seamlessly interfaces Multiple Sequence Alignment software packages including ClustalW, MAFFT, MUSCLE and Kalign 
+(downloaded separately) with the Bioconductor infrastructure. A short guide with examples can be found 
+[here](http://github.com/mhahsler/rMSA/raw/master/vignettes_real/rMSA.pdf).
+
+```{r echo=FALSE, results = 'asis'}
+pkg_install(pkg, CRAN = FALSE)
+```
+
+Additional installation instructions can be found [here](INSTALL).
+
+
+## Example
+```{r}
+library("rMSA")
+
+rna <- readRNAStringSet(system.file("examples/RNA_example.fasta", package="rMSA"))
+rna
+
+al <- clustal(rna)
+al
+```
